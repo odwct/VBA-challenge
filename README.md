@@ -1,4 +1,5 @@
 # VBA-challenge
+![stockmarket](https://user-images.githubusercontent.com/126130532/230586668-b03a0c87-ad18-4d23-89dc-a5d2fc310b15.jpg)
 
 # Goals
 
