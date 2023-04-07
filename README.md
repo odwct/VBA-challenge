@@ -1,104 +1,33 @@
 # VBA-challenge
-Module 2 Challenge
-Sub Stock_By_Year()
 
-'Loop through all sheets
-    For Each ws In Worksheets
-    
-'Set inicial variable
+# Goals
 
-Dim Ticker_Symbol As String
-Dim Yearly_Change As Double
-Dim Percentage_Change As Double
-Dim j As Integer
-Dim Open_price As Double
-Dim Close_price As Double
-Dim Total_Volume As Double
+- Create a script that loops through all the stocks for one year and outputs the following information:
 
+- The ticker symbol
 
-j = 2
-Total_Volume = 0
+- Yearly change from the opening price at the beginning of a given year to the closing price at the end of that year.
 
-' Initial Open Price
-Open_price = ws.Cells(2, 3).Value
+- The percentage change from the opening price at the beginning of a given year to the closing price at the end of that year.
 
-'Find last row
-Dim lastrow As Long
-lastrow = ws.Cells(Rows.Count, 1).End(xlUp).Row
+- The total stock volume of the stock.
 
-' Loop through all tickers
+- Add functionality to your script to return the stock with the "Greatest % increase", "Greatest % decrease", and "Greatest total volume". 
 
-        For i = 2 To lastrow
-            If ws.Cells(i + 1, 1).Value <> ws.Cells(i, 1).Value Then
- 
-'Output ticker symbols
- 
-Ticker_Symbol = ws.Cells(i, 1).Value
-ws.Cells(j, 10).Value = Ticker_Symbol
-  
-' Output yearly change
+# Results
 
-Close_price = ws.Cells(i, 6).Value
-Yearly_Change = Close_price - Open_price
-ws.Cells(j, 11).Value = Yearly_Change
+# Testing Code
 
-' Output Percentage change
+- Running code alphabetical_testing.xlsm
 
-Percentage_Change = Yearly_Change / Open_price
-ws.Cells(j, 12).Value = Percentage_Change
-ws.Cells(j, 12).NumberFormat = "0.00%"
+Screenshot
 
-' Output total stock volume
+<img width="963" alt="Macro_WS_A" src="https://user-images.githubusercontent.com/126130532/230587042-177ab825-726b-4313-8f47-30d8c1ea3b76.png">
+- Running code multiple_year_stock_data.xlsm
 
-' Find last row Yearly Change
-Dim YChangelastrow As Long
-YChangelastrow = ws.Cells(Rows.Count, 11).End(xlUp).Row
+Screenshot
 
-'' Define colors
-For j = 2 To YChangelastrow
- 
- ' Set positive change in green
+<img width="960" alt="Not_responding_Excel" src="https://user-images.githubusercontent.com/126130532/230587025-920758e4-ada8-443b-bbce-4bf5b7895111.png">
 
- If ws.Cells(j, 11).Value >= 0 Then
-  ws.Cells(j, 11).Interior.ColorIndex = 10
-  
-' Set negative change in red
-
- ElseIf ws.Cells(j, 11).Value < 0 Then
-  ws.Cells(j, 11).Interior.ColorIndex = 3
-
-End If
-Next j
-
-' Setting Greatest % (increase, decrease and total volume)
-
-' Add titles to the Column Header
-
-ws.Cells(2, 15).Value = "Greatest % Increase"
-ws.Cells(3, 15).Value = "Greatest % Decrease"
-ws.Cells(4, 15).Value = "Greatest Total Volume"
-ws.Cells(1, 16).Value = "Ticker Symbol"
-ws.Cells(1, 17).Value = "Value"
-
-'updating opening price
-
-Open_price = ws.Cells(i + 1, 3).Value
-
- ' Add titles to the Column Header
- 
-        ws.Cells(1, 10).Value = "Ticker Symbol"
-        ws.Cells(1, 11).Value = "Yearly Change"
-        ws.Cells(1, 12).Value = "Percentage Change"
-        ws.Cells(1, 13).Value = "Total Stock Volume"
-
-' Autofit display data
-
-        ws.Columns("J:Z").AutoFit
-        
-End If
-
-Next i
-
-    Next ws
-        
-End Sub
+Comments: 
+Unfortunately, the code didn't run successfuly on the main file. 
